@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTicketRequest;
 use App\Jobs\EnrichTicketWithAi;
+use App\Enums\TicketStatus;
 use App\Models\Ticket;
 use Illuminate\Http\JsonResponse;
 
@@ -17,6 +18,7 @@ final class TicketController extends Controller
         $ticket = Ticket::query()->create([
             'title' => $request->string('title')->toString(),
             'description' => $request->string('description')->toString(),
+            'status' => TicketStatus::open,
         ]);
 
         EnrichTicketWithAi::dispatch($ticket->id);
