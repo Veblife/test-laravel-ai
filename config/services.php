@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     /*
@@ -34,5 +36,12 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+
+    'ai' => [
+        'url' => env('AI_ENRICHMENT_URL'),
+        'key' => env('AI_ENRICHMENT_KEY'),
+        'system_prompt' => env('AI_SYSTEM_PROMPT', ''),
+    ],
+
 
 ];
