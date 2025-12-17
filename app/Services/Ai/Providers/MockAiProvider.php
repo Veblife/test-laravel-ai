@@ -17,8 +17,8 @@ final class MockAiProvider implements AiProvider
         $sentimentRaw = (string) config('services.ai.mock.sentiment', 'Neutral');
         $reply = (string) config('services.ai.mock.reply', 'Mock reply: ticket received, we will help you shortly.');
 
-        $category = TicketCategory::tryFrom($categoryRaw) ?? TicketCategory::General;
-        $sentiment = TicketSentiment::tryFrom($sentimentRaw) ?? TicketSentiment::Neutral;
+        $category = TicketCategory::tryFrom($categoryRaw) ?? TicketCategory::general;
+        $sentiment = TicketSentiment::tryFrom($sentimentRaw) ?? TicketSentiment::neutral;
 
         return new AiEnrichmentResult(
             category: $category,

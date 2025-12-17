@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('description');
 
             // Enum-status: Open/Resolved
-            $table->string('status')->default(TicketStatus::Open->value)->index();
+            $table->string('status')->default(TicketStatus::open->value)->index();
 
             $table->string('category')->nullable()->index(); // Technical/Billing/General и т.п.
             $table->string('sentiment')->nullable()->index(); // Positive/Neutral/Negative

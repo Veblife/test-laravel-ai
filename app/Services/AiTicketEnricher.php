@@ -42,7 +42,7 @@ final class AiTicketEnricher
             'category' => $result->category,
             'sentiment' => $result->sentiment,
             'suggested_reply' => $result->reply,
-            'status' => TicketStatus::Resolved,
+            'status' => TicketStatus::resolved,
         ])->save();
     }
 }

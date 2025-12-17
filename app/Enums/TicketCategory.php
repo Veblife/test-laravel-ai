@@ -6,7 +6,7 @@ namespace App\Enums;
 
 enum TicketCategory: string
 {
-    case Technical = 'Technical';
-    case Billing = 'Billing';
-    case General = 'General';
+    case technical = 'technical';
+    case billing = 'billing';
+    case general = 'general';
 }

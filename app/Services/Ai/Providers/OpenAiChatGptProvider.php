@@ -80,8 +80,8 @@ final class OpenAiChatGptProvider implements AiProvider
         $sentimentRaw = Arr::get($resultPayload, 'sentiment');
         $replyRaw = Arr::get($resultPayload, 'reply');
 
-        $category = TicketCategory::tryFrom(is_string($categoryRaw) ? $categoryRaw : '') ?? TicketCategory::General;
-        $sentiment = TicketSentiment::tryFrom(is_string($sentimentRaw) ? $sentimentRaw : '') ?? TicketSentiment::Neutral;
+        $category = TicketCategory::tryFrom(is_string($categoryRaw) ? $categoryRaw : '') ?? TicketCategory::general;
+        $sentiment = TicketSentiment::tryFrom(is_string($sentimentRaw) ? $sentimentRaw : '') ?? TicketSentiment::neutral;
         $reply = is_string($replyRaw) ? $replyRaw : null;
 
         return new AiEnrichmentResult(
@@ -95,8 +95,8 @@ final class OpenAiChatGptProvider implements AiProvider
     private function fallbackResult(array $raw, ?string $content = null): AiEnrichmentResult
     {
         return new AiEnrichmentResult(
-            category: TicketCategory::General,
-            sentiment: TicketSentiment::Neutral,
+            category: TicketCategory::general,
+            sentiment: TicketSentiment::neutral,
             reply: $content,
             raw: $raw,
         );
