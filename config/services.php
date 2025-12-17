@@ -39,6 +39,7 @@ return [
 
     'ai' => [
         'provider' => env('AI_PROVIDER', 'openai'),
+        'test_mode' => env('AI_TEST_MODE', false),
 
         'system_prompt' => env('AI_SYSTEM_PROMPT', ''),
 
@@ -46,6 +47,12 @@ return [
             'api_key' => env('OPENAI_API_KEY'),
             'model' => env('OPENAI_MODEL', 'gpt-4o-mini'),
             'base_url' => env('OPENAI_BASE_URL', 'https://api.openai.com/v1'),
+        ],
+
+        'mock' => [
+            'category' => env('AI_MOCK_CATEGORY', 'General'),
+            'sentiment' => env('AI_MOCK_SENTIMENT', 'Neutral'),
+            'reply' => env('AI_MOCK_REPLY', 'Mock reply: we are looking into your issue.'),
         ],
     ],
 

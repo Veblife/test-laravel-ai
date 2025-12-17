@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Enums\TicketStatus;
 use App\Models\Ticket;
 use App\Services\Ai\AiProvider;
 use GuzzleHttp\Exception\GuzzleException;
@@ -41,6 +42,7 @@ final class AiTicketEnricher
             'category' => $result->category,
             'sentiment' => $result->sentiment,
             'suggested_reply' => $result->reply,
+            'status' => TicketStatus::Resolved,
         ])->save();
     }
 }

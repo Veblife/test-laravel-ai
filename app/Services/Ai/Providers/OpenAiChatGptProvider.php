@@ -13,7 +13,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 
-final class OpenAiChatGpt implements AiProvider
+final class OpenAiChatGptProvider implements AiProvider
 {
     public function __construct(
         private readonly ClientInterface $http,
