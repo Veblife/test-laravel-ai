@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Services\Ai\AiProvider;
+use App\Services\Ai\Providers\OpenAiChatGpt;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\ServiceProvider;
@@ -16,6 +18,15 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(ClientInterface::class, fn () => new Client());
+
+        $this->app->bind(AiProvider::class, function () {
+            $provider = (string) config('services.ai.provider', 'openai');
+
+            return match ($provider) {
+                'openai', 'chatgpt' => $this->app->make(OpenAiChatGpt::class),
+                default => throw new \RuntimeException("Unknown AI provider: {$provider}"),
+            };
+        });
     }
 
     /**
